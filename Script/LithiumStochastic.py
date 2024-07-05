@@ -417,9 +417,11 @@ def run_sim(parameters, target_array, tolerance=1.1, mode='random',
         Dsed_range = (np.zeros((nt, s)) +
                     rng.uniform(param['Dsed'][0], param['Dsed'][1], s))
         
-        Falt_range = (np.zeros((nt, s)) +
-                    rng.uniform(param['Falt'][0], param['Falt'][1], s))
+        # Falt_range = (np.zeros((nt, s)) +
+        #             rng.uniform(param['Falt'][0], param['Falt'][1], s))
         
+        Falt_range = Fr_range + Fh_input - Fsed_range
+
         Dalt_range = (np.zeros((nt, s)) +
                     rng.uniform(param['Dalt'][0], param['Dalt'][1], s))
 
@@ -491,6 +493,7 @@ def run_sim(parameters, target_array, tolerance=1.1, mode='random',
         
         Falt_range = (np.zeros((nt, s)) +
                     rng.uniform(param['Falt'][0], param['Falt'][1], s))
+    
         
         Dalt_range = (np.zeros((nt, s)) +
                     rng.uniform(param['Dalt'][0], param['Dalt'][1], s))
@@ -531,6 +534,6 @@ def run_sim(parameters, target_array, tolerance=1.1, mode='random',
             'Dalt' : Dalt_res,
             'age' : age
         }
-    
 
+    
     return results
